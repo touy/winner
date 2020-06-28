@@ -5,7 +5,7 @@ private project from Laoapps
 3.	ລົງທະບຽນ https://github.com/
 4.	https://git-scm.com/downloads
 5.	https://www.npmjs.com/ (ມານຳNODEJS , ສຳລັບ ຕິດຕັ້ງ PACKAGE)
-git clone https://github.com/touy/winner.
+git clone https://github.com/touy/winner.git
 .gitignore
 npm init
 npm i 
