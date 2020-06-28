@@ -1,25 +1,37 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.App = void 0;
-const user_1 = require("./models/user");
+const express = require("express");
+const cors = require("cors");
+const BodyParser = require("body-parser");
+const routers_1 = require("./routers/routers");
+const mongoose = require("mongoose");
 class App {
     constructor() {
-        //user: IUser = new User('touy','123456',8562055516321,'touya.ra@gmail.com');
-        this.user = {};
+        this.mongoUrl = 'mongodb://localhost/LaoappsWallet';
+        this.app = express();
+        this.routers = new routers_1.Routers();
+        this.config();
+        this.setUpMongoose();
     }
-    createUser(userName, password, phoneNumber, email) {
-        this.user = new user_1.User(userName, password, phoneNumber, email);
-        return this.user;
+    config() {
+        this.app.use(BodyParser.json());
+        this.app.use(cors());
+        this.app.options('*', cors());
+        this.routers.routing(this.app);
     }
-    createPersonForUser(user, person) {
-        user.setPerson(person);
-        this.user = user;
-        return this.user;
-    }
-    show() {
-        console.log('show app', this);
+    setUpMongoose() {
+        const option = {
+            useNewUrlParser: true, useUnifiedTopology: true,
+            useFindAndModify: false, readPreference: "primaryPreferred"
+        };
+        mongoose.connect(this.mongoUrl, option).then(r => {
+            console.log('mongoose connection ok ');
+        }).catch(e => {
+            console.log('error mongoose connection', e);
+        });
     }
 }
 exports.App = App;
-var app = new App();
-app.show();
+exports.default = new App().app;
+//# sourceMappingURL=app.js.map
