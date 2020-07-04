@@ -15,19 +15,19 @@ private project from Laoapps
 12. tsc --init
 13. ອອກແບບ ລະບົບ
 - ADMIN
--- ISSUER LIST // ລາຍການຜູ້ອອກເກມ
--- ISSUER APPROVAL //  ອະນຸມັດຜູ້ອອກເກມ
--- CLIENT LIST // ລາຍການຜູ້ຫຼີ້ນເກມ.
--ISSUER
--- REGISTER // ລົງທະບຽນ
--- ISSUE GAME // ອອກເກມ
--- AWARD // ລາງວັນ
--- HISTORY // ປະຫັວດ
++ ISSUER LIST // ລາຍການຜູ້ອອກເກມ
++ ISSUER APPROVAL //  ອະນຸມັດຜູ້ອອກເກມ
++ CLIENT LIST // ລາຍການຜູ້ຫຼີ້ນເກມ.
+- ISSUER
++ REGISTER // ລົງທະບຽນ
++ ISSUE GAME // ອອກເກມ
++ AWARD // ລາງວັນ
++ HISTORY // ປະຫັວດ
 - CLIENT
--- REGISTER // ລົງທະບຽນ
--- GAME LIST // ລາຍການເກມ
---- PLAY GAME // ຫຼີ້ນເກມ
--- HISTORY // ປະຫວັດ
++ REGISTER // ລົງທະບຽນ
++ GAME LIST // ລາຍການເກມ
+* PLAY GAME // ຫຼີ້ນເກມ
++ HISTORY // ປະຫວັດ
 14. ເລືອກ ເກມ - CLIENT
 15. ຫຼີ້ນເກມ
 16. ປະຫວັດ
