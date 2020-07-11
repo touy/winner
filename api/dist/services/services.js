@@ -1,48 +1,54 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.userType = void 0;
-class Services {
-    constructor() {
+var Services = /** @class */ (function () {
+    function Services() {
         this.accessTokenSecret = 'fdsasdfkasfnsalvsad2134t3fhzchfq4foufpqw';
     }
-    okRes(data, message = '') {
+    Services.prototype.okRes = function (data, message) {
+        if (message === void 0) { message = ''; }
         message = message ? message : 'ok';
-        return { message, data, code: 1 };
-    }
-    errRes(data = {}, message = '', code = 0) {
+        return { message: message, data: data, code: 1 };
+    };
+    Services.prototype.errRes = function (data, message, code) {
+        if (data === void 0) { data = {}; }
+        if (message === void 0) { message = ''; }
+        if (code === void 0) { code = 0; }
         message = message ? message : 'error';
         code = code ? code : 0;
-        return { message, data, code };
-    }
-    generatePassword(length = 6) {
-        const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-        let retVal = "";
-        for (let i = 0, n = charset.length; i < length; ++i) {
+        return { message: message, data: data, code: code };
+    };
+    Services.prototype.generatePassword = function (length) {
+        if (length === void 0) { length = 6; }
+        var charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        var retVal = "";
+        for (var i = 0, n = charset.length; i < length; ++i) {
             retVal += charset.charAt(Math.floor(Math.random() * n));
         }
         return retVal;
-    }
-    isUser(e) {
+    };
+    Services.prototype.isUser = function (e) {
         if (e == userType.user)
             return true;
         return false;
-    }
-    isSuperAdmin(e) {
+    };
+    Services.prototype.isSuperAdmin = function (e) {
         if (e == userType.superadmin)
             return true;
         return false;
-    }
-    isAdmin(e) {
+    };
+    Services.prototype.isAdmin = function (e) {
         if (e == userType.admin)
             return true;
         return false;
-    }
-    isAuthorized(e) {
+    };
+    Services.prototype.isAuthorized = function (e) {
         if (e == userType.superadmin || e == userType.user)
             return true;
         return false;
-    }
-}
+    };
+    return Services;
+}());
 var userType;
 (function (userType) {
     userType["user"] = "user";

@@ -1,4 +1,17 @@
 "use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.cWallet = exports.currencies = void 0;
 // TEXT
@@ -58,12 +71,12 @@ mywallet.amount = 0;
 mywallet.created_time = (new Date()).toString();
 mywallet.updateed_time = (new Date()).toString();
 mywallet.currency = 'KIP';
-mywallet.pay = (amount, receiver) => {
+mywallet.pay = function (amount, receiver) {
     mywallet.amount -= amount;
     if (!mywallet.receiver || mywallet.receiver != null || mywallet.receiver != undefined) { // true false
         mywallet.receiver = [];
     }
-    const r = {};
+    var r = {};
     r.amount = amount;
     r.created_time = (new Date()).toString();
     r.updated_time = (new Date()).toString();
@@ -71,12 +84,12 @@ mywallet.pay = (amount, receiver) => {
     mywallet.receiver.push(r);
     return 'ok';
 };
-mywallet.receive = (amount, sender) => {
+mywallet.receive = function (amount, sender) {
     mywallet.amount += amount;
     if (!mywallet.senders || mywallet.senders != null || mywallet.senders != undefined) { // true false
         mywallet.senders = [];
     }
-    const s = {};
+    var s = {};
     s.amount = amount;
     s.created_time = (new Date()).toString();
     s.updated_time = (new Date()).toString();
@@ -89,8 +102,13 @@ mywallet.receive = (amount, sender) => {
 // console.log(mywallet);
 //}
 // CLASS
-class cWallet {
-    constructor(owner = '', currency = '', amount = 100, created_time = '', updated_time = '') {
+var cWallet = /** @class */ (function () {
+    function cWallet(owner, currency, amount, created_time, updated_time) {
+        if (owner === void 0) { owner = ''; }
+        if (currency === void 0) { currency = ''; }
+        if (amount === void 0) { amount = 100; }
+        if (created_time === void 0) { created_time = ''; }
+        if (updated_time === void 0) { updated_time = ''; }
         this.senders = [];
         this.receiver = [];
         this.currency = currency;
@@ -99,33 +117,34 @@ class cWallet {
         this.updateed_time = updated_time;
         this.owner = owner;
     }
-    pay(amount, receiver) {
+    cWallet.prototype.pay = function (amount, receiver) {
         this.amount -= amount;
         if (!this.receiver || this.receiver != null || this.receiver != undefined) { // true false
             this.receiver = [];
         }
-        const r = {};
+        var r = {};
         r.amount = amount;
         r.created_time = (new Date()).toString();
         r.updated_time = (new Date()).toString();
         r.name = receiver;
         this.receiver.push(r);
         return 'ok';
-    }
-    receive(amount, sender) {
+    };
+    cWallet.prototype.receive = function (amount, sender) {
         this.amount += amount;
         if (!this.senders || this.senders != null || this.senders != undefined) { // true false
             this.senders = [];
         }
-        const s = {};
+        var s = {};
         s.amount = amount;
         s.created_time = (new Date()).toString();
         s.updated_time = (new Date()).toString();
         s.name = sender;
         this.senders.push(s);
         return 'ok';
-    }
-}
+    };
+    return cWallet;
+}());
 exports.cWallet = cWallet;
 var myCWallet = new cWallet('touy', currencies.KIP, 0, new Date().toString(), new Date().toString());
 myCWallet.receive(1000, 'you');
@@ -209,7 +228,7 @@ var myDay;
     myDay["Saturday"] = "Saturday";
     myDay["Sunday"] = "Sunday";
 })(myDay || (myDay = {}));
-let day = myDay.Sunday;
+var day = myDay.Sunday;
 switch (day) {
     case myDay.Monday:
         break;
@@ -239,13 +258,14 @@ switch (day) {
 //--
 // FOR 
 var arr = [1, 2, 3, 4, 5];
-for (let index = 0; index < arr.length; index++) {
+for (var index = 0; index < arr.length; index++) {
     // const element = arr[index];
     // arr.push(index);
     // console.log(element);
 }
 // FOR OF
-for (const it of arr) {
+for (var _i = 0, arr_1 = arr; _i < arr_1.length; _i++) {
+    var it = arr_1[_i];
     console.log(it);
 }
 // FOR IN 
@@ -255,9 +275,9 @@ var obj = [
     { name: 'e', lastname: 'f' },
 ];
 var obj1 = { name: 'I', lastname: 'J' };
-for (const key in obj1) {
+for (var key in obj1) {
     console.log('key', key);
-    const k = key + '';
+    var k = key + '';
     console.log('obj value', obj1);
     // if (obj.hasOwnProperty(key)) {
     //     const element = obj[key];
@@ -278,26 +298,27 @@ do {
 } while (nn <= 0);
 //  FOR IN ,FOREACH 
 var boj2 = { name: 'A', lastname: 'B' };
-for (const key in boj2) { // "suppressImplicitAnyIndexErrors":true,
+for (var key in boj2) { // "suppressImplicitAnyIndexErrors":true,
     if (boj2.hasOwnProperty(key)) {
-        const val = boj2[key];
+        var val = boj2[key];
         console.log('key ', key);
         console.log('value', val);
     }
 }
 // FOR EACH
 var arr = [1, 2, 3, 4, 5];
-arr.forEach(element => {
+arr.forEach(function (element) {
     console.log('element', element);
 });
-for (const element of arr) {
+for (var _a = 0, arr_2 = arr; _a < arr_2.length; _a++) {
+    var element = arr_2[_a];
     console.log('element2', element);
 }
 //function , arrow function, function overloading, rest parameters
 func1();
 console.log('called sum', sum(1, 1));
-let sk = 1;
-let sk1 = 1;
+var sk = 1;
+var sk1 = 1;
 // function add(a:number, b:number): number;
 // function add(a:number, b:number): string;
 function add(a, b) {
@@ -317,64 +338,83 @@ function func1() {
     console.log('func1');
 }
 // function arrow
-let func2 = () => {
+var func2 = function () {
     console.log('func2 called');
 };
 func2();
-let func3 = () => console.log('func3');
+var func3 = function () { return console.log('func3'); };
 func3();
-function Greet(greeting, ...names) {
+function Greet(greeting) {
+    var names = [];
+    for (var _i = 1; _i < arguments.length; _i++) {
+        names[_i - 1] = arguments[_i];
+    }
     return greeting + " " + names.join(", ") + "!";
 }
-function Greet2(greeting, ...names) {
-    names.forEach(e => {
+function Greet2(greeting) {
+    var names = [];
+    for (var _i = 1; _i < arguments.length; _i++) {
+        names[_i - 1] = arguments[_i];
+    }
+    names.forEach(function (e) {
         console.log('greet2', greeting + ' ' + e);
     });
 }
 Greet2('welcome', 'a', 'b', 'c');
 function Greet3(greeting, names) {
-    names.forEach(e => {
+    names.forEach(function (e) {
         console.log('greet23', greeting + ' ' + e);
     });
 }
 Greet3('welcome', ['a', 'b', 'c']);
-function Greet4(greeting = '', names = [], age = 0) {
+function Greet4(greeting, names, age) {
+    if (greeting === void 0) { greeting = ''; }
+    if (names === void 0) { names = []; }
+    if (age === void 0) { age = 0; }
     console.log('greet4');
-    names.forEach(e => {
+    names.forEach(function (e) {
         console.log('greet4', greeting + ' ' + e);
     });
 }
 Greet4('', [], 10);
-class Objx {
-    constructor(name = '') {
+var Objx = /** @class */ (function () {
+    function Objx(name) {
+        if (name === void 0) { name = ''; }
         this.name = '';
         this.lastname = '';
         this.age = 0;
         this.name = name ? name : 'mr.';
     }
-    show() {
+    Objx.prototype.show = function () {
         console.log('show Objx', this.name, this.age, this.lastname);
-    }
-}
-let objx = new Objx();
+    };
+    return Objx;
+}());
+var objx = new Objx();
 objx.show();
-class Employee {
-    constructor(empcode, name) {
+var Employee = /** @class */ (function () {
+    function Employee(empcode, name) {
         this.empCode = empcode;
         this.name = name;
         this.lastName = '';
         this.age = 0;
         this.position = '';
     }
-    display() {
+    Employee.prototype.display = function () {
         console.log("Name = " + this.name + ", Employee Code = " + this.empCode);
+    };
+    return Employee;
+}());
+var Member = /** @class */ (function (_super) {
+    __extends(Member, _super);
+    function Member() {
+        return _super !== null && _super.apply(this, arguments) || this;
     }
-}
-class Member extends Employee {
-    show() {
+    Member.prototype.show = function () {
         this.display();
-    }
-}
+    };
+    return Member;
+}(Employee));
 var m = new Member(123, 'A');
 m.show();
 // B.EP19 module, export // - NAMSPACE

@@ -1,0 +1,84 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>load demo</title>
+    <style>
+        body {
+            font-size: 12px;
+            font-family: Arial;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <button onclick="loadOK()"> load ok</button>
+    <button onclick="loadPage()"> load page</button>
+    <button onclick="loadGoogle()"> load google</button>
+    <button onclick="getEmployees()"> load employee</button>
+    <button onclick="getEmployeeByID()"> load employee</button>
+    EMPLOYEE INFO <input id='eid' value="0" />
+    <div>
+        <p id='employee_name'></p>
+        <p id='id'></p>
+        <p id='employee_salary'></p>
+        <p id='employee_age'></p>
+        <p id='profile_image'></p>
+    </div>
+    employee list
+    <div id='employeelist'>
+
+    </div>
+
+    <b>Projects:</b>
+    <ol id="new-projects"></ol>
+
+    <script>
+        function loadOK() {
+            $("#new-projects").load("/ok");
+        }
+        function loadPage() {
+            $("#new-projects").load("/page");
+        }
+        function loadGoogle() {
+            try {
+                $("#new-projects").load("http://www.google.com");
+            } catch (error) {
+                alert(error);
+            }
+
+        }
+        function getEmployees() {
+            $('#new-projects').load('http://dummy.restapiexample.com/api/v1/employees');
+        }
+        function getEmployeeByID() {
+            var id = 4;
+
+            $.get("http://dummy.restapiexample.com/api/v1/employees", function (res, status) {
+                console.log(res.data);
+                var employee = {};
+                var id = $("#eid").val() ? $("#eid").val() : 0;
+                var html = '';
+                for (let index = 0; index < res.data.length; index++) {
+                    const data = res.data[index];
+                    if (id == data.id) {
+                        $("#id").text(data.id);
+                        $("#employee_name").text(data.employee_name);
+                        $("#employee_salary").text(data.employee_salary);
+                        $("#employee_age").text(data.employee_age);
+                    }
+                    html+= "<p >" + data.id + "</p>" +
+                        "<p >" + data.employee_name + "</p>" +
+                        "<p >" + data.employee_salary + "</p>" +
+                        "<p >" + data.employee_age + "</p>";
+                }
+                $("#employeelist").html(html);
+
+            });
+        }
+    </script>
+
+</body>
+
+</html>
