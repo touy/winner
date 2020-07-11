@@ -10,7 +10,7 @@ import {Schema} from 'mongoose';
 export class App{
     app: express.Application ;
     routers: Routers;
-    mongoUrl: string = 'mongodb://localhost/LaoappsWallet';
+    mongoUrl: string = 'mongodb://localhost/LaoappsWinner';
     constructor(){
         this.app = express();        
         this.routers = new Routers();

@@ -2,7 +2,6 @@ class Services{
     public accessTokenSecret = 'fdsasdfkasfnsalvsad2134t3fhzchfq4foufpqw';
 
     constructor(){
-
     }
     okRes(data:any,message:string = ''):any{
         message=message?message:'ok'

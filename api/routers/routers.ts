@@ -7,6 +7,7 @@ import * as service from '../services/services';
 import {ClientController} from '../controllers/clientController';
 import { Client } from '../models/clientModel';
 import * as path from 'path';
+
 export class Routers {
     // walletUserController = new WalletUserController();
     // docWalletUser = mongoose.model<IWalletUser, WalletUserModel>('WalletUser', walletUserSchema);
@@ -52,7 +53,7 @@ export class Routers {
         // CRUD  = Create , Read , Update , Delete
         // client
         // get client details 
-
+        app.
         app.get('/',(req:Request,res:Response)=>{
             res.send({message:'Hello',status:'ok',statusCode:1});
         });
@@ -67,7 +68,6 @@ export class Routers {
             let html ='<h1>page</h1>';
             res.sendFile(path.join(__dirname+'/about.html'));
         });
-        
 
         app.post('/setClientDetails',this.setClientDetails.bind(this));
         app.post('/getClientDetails/:id',this.getClientDetails.bind(this));
