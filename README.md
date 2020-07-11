@@ -34,3 +34,4 @@ private project from Laoapps
 17. road map
 18. https://stackoverflow.com/questions/35369501/tsc-is-not-recognized-as-internal-or-external-command/47898735
 19. post man :https://www.postman.com/
+20. angular 
