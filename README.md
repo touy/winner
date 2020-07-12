@@ -34,4 +34,18 @@ private project from Laoapps
 17. road map
 18. https://stackoverflow.com/questions/35369501/tsc-is-not-recognized-as-internal-or-external-command/47898735
 19. post man :https://www.postman.com/
-20. angular 
+20. angular https://angular.io/start
+21. npm install -g @angular/cli
+22. ng new winner
+23. ng serve
+24. https://angular.io/cli/generate
+25. ng g c addPlayer
+26. routing
+27. const routes: Routes = [
+  {path:'addPlayer',component:AddPlayerComponent}
+];
+28. 2 way binding https://blog.thoughtram.io/angular/2016/10/13/two-way-data-binding-in-angular-2.html
+29. fixed ngModel https://stackoverflow.com/questions/43298011/angular-error-cant-bind-to-ngmodel-since-it-isnt-a-known-property-of-inpu
+import { FormsModule } from '@angular/forms';
+30. https://angular.io/guide/http
+http request

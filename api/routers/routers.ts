@@ -4,14 +4,13 @@ import * as mongoose from 'mongoose';
 import { } from '../services/services';
 import * as jwt from 'jsonwebtoken';
 import * as service from '../services/services';
-import {ClientController} from '../controllers/clientController';
-import { Client } from '../models/clientModel';
+
 import * as path from 'path';
 
+import { PlayerController } from '../controllers/playerController';
+import { IPlayer } from 'models/playerModel';
 export class Routers {
-    // walletUserController = new WalletUserController();
-    // docWalletUser = mongoose.model<IWalletUser, WalletUserModel>('WalletUser', walletUserSchema);
-    clientController = new ClientController();
+    playerController = new PlayerController();
     constructor() {
 
     }
@@ -49,68 +48,119 @@ export class Routers {
             res.sendStatus(401);
         }
     };
+    formatSuccess(data:any,message:string='ok',statuscode:number=1){
+        return {message,data,statuscode};
+    }
+    formatError(data:any,message:string='error',statuscode:number=0){
+        return {message,data,statuscode};
+    }
     routing(app: Application) {
         // CRUD  = Create , Read , Update , Delete
         // client
         // get client details 
-        app.
-        app.get('/',(req:Request,res:Response)=>{
-            res.send({message:'Hello',status:'ok',statusCode:1});
-        });
-        app.get('/ok',(req:Request,res:Response)=>{
-            res.send({message:'ok',status:'ok',statusCode:1});
-        });
-        app.get('/page',(req:Request,res:Response)=>{
-            let html ='<h1>page</h1>';
-            res.send(html);
-        });
-        app.get('/html',(req:Request,res:Response)=>{
-            let html ='<h1>page</h1>';
-            res.sendFile(path.join(__dirname+'/about.html'));
-        });
 
-        app.post('/setClientDetails',this.setClientDetails.bind(this));
-        app.post('/getClientDetails/:id',this.getClientDetails.bind(this));
-        app.post('/login',this.login.bind(this));
+        app.get('/', (req: Request, res: Response) => {
+            res.send({ message: 'Hello', status: 'ok', statusCode: 1 });
+        });
+        // Players
+        //new player
+        // object:IPlayer
+        app.put('/player', this.addNewPlayer.bind(this))
+            // update palyer
+            // .post('/player')
+            // // delete player
+            // .delete('/player/:id')
+            // // player info
+            .get('/player/:id', this.getPlayerInfo.bind(this))
+        // // player list
+        .get('/player',this.getPlayerList.bind(this));
 
-        app.get('/selectGame',this.selectGame.bind(this));
-        app.get('/playGame',this.playGame.bind(this));
-        app.get('/history',this.history.bind(this));
- 
     }
-    login(req:Request,res:Response){
-        // let username= req.body.username;
-        // let password = req.body.password;
-        let c:Client =new Client(req.body);
-        let login = this.clientController.login(c);
-        if(login===true){
-            res.send({status:'login ok'});
+    addNewPlayer(req: Request, res: Response) {
+        try {
+            const p: IPlayer = req.body as IPlayer;
+            this.playerController.create(p).then(r => {
+                delete r._id;
+                delete r.id;
+                res.send(this.formatSuccess(r));
+            }).catch(e => {
+                res.send(this.formatError(e));
+            })
+        } catch (e) {
+            console.log(e);
+            res.send(this.formatError(e));
         }
-        else{
-            res.send({status:'login failed'});
+
+    }
+    getPlayerInfo(req: Request, res: Response) {
+        try {
+            const _id: string = req.params.id;
+           this.playerController.playerInfo(_id).then(r=>{
+            res.send(this.formatSuccess(r));
+           }).catch(e=>{
+            res.send(this.formatError(e));
+           });
+            
+        } catch (e) {
+            console.log(e);
+            res.send(this.formatError(e));
         }
+
+
+
     }
-    getClientDetails(req:Request,res:Response){
-        let id = req.params.id;
-        let c = this.clientController.getClientDetails(id);
-        res.send(c);
+    getPlayerList(req: Request, res: Response) {
+        try {
+            let limit: number = Number.parseInt((req.query.limit+'')?(req.query.limit+''):'10');
+            const offset: number =  Number.parseInt((req.query.offset+'')?(req.query.offset+''):'0');
+            limit = limit>100?100:limit;
+           this.playerController.playerList(limit,offset).then(r=>{
+            res.send(this.formatSuccess(r));
+           }).catch(e=>{
+            res.send(this.formatError(e));
+           });
+            
+        } catch (e) {
+            console.log(e);
+            res.send(this.formatError(e));
+        }
+
+
+
     }
-    setClientDetails(req:Request,res:Response){
-        this.clientController.setClientDetails({} as Client);
-        res.end();
-    }
-    selectGame(req:Request,res:Response){
-        this.clientController.setClientDetails({} as Client);
-        res.send({message:'select game'});
-    }
-    playGame(req:Request,res:Response){
-        this.clientController.setClientDetails({} as Client);
-        res.send({message:'playgame'});
-    }
-    history(req:Request,res:Response){
-        this.clientController.setClientDetails({} as Client);
-        res.send({message:'history'});
-    }
+    // login(req:Request,res:Response){
+    //     // let username= req.body.username;
+    //     // let password = req.body.password;
+    //     let c:Client =new Client(req.body);
+    //     let login = this.clientController.login(c);
+    //     if(login===true){
+    //         res.send({status:'login ok'});
+    //     }
+    //     else{
+    //         res.send({status:'login failed'});
+    //     }
+    // }
+    // getClientDetails(req:Request,res:Response){
+    //     let id = req.params.id;
+    //     let c = this.clientController.getClientDetails(id);
+    //     res.send(c);
+    // }
+    // setClientDetails(req:Request,res:Response){
+    //     this.clientController.setClientDetails({} as Client);
+    //     res.end();
+    // }
+    // selectGame(req:Request,res:Response){
+    //     this.clientController.setClientDetails({} as Client);
+    //     res.send({message:'select game'});
+    // }
+    // playGame(req:Request,res:Response){
+    //     this.clientController.setClientDetails({} as Client);
+    //     res.send({message:'playgame'});
+    // }
+    // history(req:Request,res:Response){
+    //     this.clientController.setClientDetails({} as Client);
+    //     res.send({message:'history'});
+    // }
     // Query
 
 
