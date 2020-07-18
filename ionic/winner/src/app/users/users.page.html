@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>users</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+<h1>User info</h1>
+<div *ngIf="user" class="whiteBackGround">
+  <!-- <div>
+    {{user.id}}
+  </div>
+  <div>
+    {{user.username}}
+  </div> -->
+  <ion-label>ID</ion-label>
+  <ion-input type="text" class = "inputBG" color="primary" [value]="user.id" ></ion-input>
+  <ion-label>username</ion-label>
+  <ion-input type="text"class = "inputBG"   [(ngModel)]="user.username" ></ion-input>
+  <ion-label>password</ion-label>
+  <ion-input type="text" class = "inputBG"   [(ngModel)]="user.password" ></ion-input>
+  <ion-button (click)="createUser()">Add</ion-button>
+  <ion-button (click)="updateUser()">Update</ion-button>
+</div>
+<h1>User list</h1>
+<div *ngIf="userArray.length" class="whiteBackGround">
+  <table>
+    <tr >
+      <th>ID</th>
+      <th>Username</th>
+      <th>password</th>
+    </tr>
+    <tr *ngFor="let u of userArray">
+      <th><ion-button (click)="userInfo(u.id)">{{u.id}}</ion-button></th>
+      <th>{{u.username}}</th>
+      <th>{{u.password}}</th>
+    </tr>
+  </table>
+</div>
+</ion-content>

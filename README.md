@@ -49,3 +49,18 @@ private project from Laoapps
 import { FormsModule } from '@angular/forms';
 30. https://angular.io/guide/http
 http request
+31. 
+- nodejs
+- typescript // JAVA , JS, C# , TS ==> JS
+- sequelize
+32. https://sequelize.org/
+-  npm install --save sequelize
+33. CRUD
+34. ionic https://ionicframework.com/getting-started#
+35. ionic serve
+36. ionic start winner tabs
+37. ionic generate page users
+38. routerLink="/users"
+39. clienthttprequest
+- https://www.joshmorony.com/an-introduction-to-http-requests-fetching-data-in-ionic/
+- https://ionicframework.com/docs/api/input
