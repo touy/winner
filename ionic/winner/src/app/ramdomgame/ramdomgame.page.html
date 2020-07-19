@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>ramdomgame</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-button (click)="gameResult()">Stop</ion-button>
+  <ion-button (click)="startGame()">Start</ion-button>
+  <div>Result:{{finalResult}}</div>
+<table>
+  <tr>
+    <td [style.background-color]="changeColor(1)">1</td>
+    <td [style.background-color]="changeColor(2)">2</td>
+    <td [style.background-color]="changeColor(3)">3</td>
+    <td [style.background-color]="changeColor(4)">4</td>
+  </tr>
+
+  <tr>
+    <td [style.background-color]="changeColor(12)">12</td>
+    <td colspan="2"></td>    
+    <td [style.background-color]="changeColor(5)">5</td>
+  </tr>
+
+  <tr>
+    <td [style.background-color]="changeColor(11)">11</td>
+    <td colspan="2"></td>    
+    <td [style.background-color]="changeColor(6)">6</td>
+  </tr>
+
+  <tr>
+    <td [style.background-color]="changeColor(10)">10</td>
+    <td [style.background-color]="changeColor(9)">9</td>
+    <td [style.background-color]="changeColor(8)">8</td>
+    <td [style.background-color]="changeColor(7)">7</td>
+  </tr>
+</table>
+</ion-content>

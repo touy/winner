@@ -5,6 +5,7 @@ import * as cors from 'cors'; // RESTFULL API
 import * as bodyParser from 'body-parser'; // receive JSON
 
 import { UserModel } from './user.model';
+import {GameModel } from './game.model';
 // ສ້າງ CONNECTION
 const sequelize = new Sequelize('test', 'root', '', {
     host: 'localhost',
@@ -17,6 +18,14 @@ let userEntity = sequelize.define('Users', {
     password: { type: DataTypes.STRING},
     phonenumber: { type: DataTypes.STRING }
 });
+
+let gameEntity = sequelize.define('Games', {
+    id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
+    userid: { type: DataTypes.INTEGER },
+    result: { type: DataTypes.INTEGER},
+    createdAt: { type: DataTypes.DATE }
+});
+// gameEntity.sync();
 // ບັງຄັບ ສ້າງ TABLE , ແລະ ປ່ຽນໂຄງສ້າງ
 //1
 sequelize.authenticate().then(r => {
@@ -136,7 +145,23 @@ sequelize.authenticate().then(r => {
             res.send(e);
         });
     })
-
+    .get('/game-result/:id',(req:Request,res:Response)=>{
+        let result = Math.floor(Math.random() * 10) + 3;
+        let id = req.params.id;
+        userEntity.findByPk(id).then(x=>{
+            let u = x as unknown as UserModel;
+            if(u){
+                gameEntity.create({userid:u.id,result,createdDate:Date().toString()}).then(r=>{
+                    res.send({status:1,result});
+                }).catch(e=>{
+                    res.send({status:0,e});
+                });
+            }else{
+                res.send({status:0,e:'user not found'});
+            }
+        }).catch(e=>{res.send({status:0,e})});
+        
+    })
     app.listen(3434,'0.0.0.0',(s)=>{
         console.log('server start 0.0.0.0 port 3434',s);
     })
