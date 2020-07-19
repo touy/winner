@@ -74,3 +74,18 @@ https://medium.com/@pankaj.itdeveloper/getting-started-using-typescript-with-nod
 42. A.EP10 sequelize typescript express, RESTFUL API , index4.ts
 https://sequelize.org/
 npm install --save sequelize
+
+# One of the following:
+$ npm install --save pg pg-hstore # Postgres
+$ npm install --save mysql2
+$ npm install --save mariadb
+$ npm install --save sqlite3
+$ npm install --save tedious # Microsoft SQL Server
+
+43. ionic 
+https://ionicframework.com/getting-started
+
+npm install -g @ionic/cli
+ionic start myApp tabs
+
+ionic start 

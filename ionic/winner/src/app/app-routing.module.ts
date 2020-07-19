@@ -13,6 +13,10 @@ const routes: Routes = [
   {
     path: 'ramdomgame',
     loadChildren: () => import('./ramdomgame/ramdomgame.module').then( m => m.RamdomgamePageModule)
+  },
+  {
+    path: 'my-user',
+    loadChildren: () => import('./my-user/my-user.module').then( m => m.MyUserPageModule)
   }
 ];
 @NgModule({

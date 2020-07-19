@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>myUser</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<h1>
+user Info
+</h1>
+{{user.id}}, {{user.username}}
+<div style="background-color:gray;">
+  <label>id</label>
+  <ion-input [value]="user.id" style="background-color: white; color:black;"></ion-input>
+  <label>username</label>
+  <ion-input [(ngModel)]="user.username" style="background-color: white; color:black;"></ion-input>
+  <label >password</label>
+  <ion-input [(ngModel)]="user.password" style="background-color: white; color:black;"></ion-input>
+  <label>phonenumber</label>
+  <ion-input [(ngModel)]="user.phonenumber" style="background-color: white; color:black;"></ion-input>
+  <ion-button (click)="insert()">
+    Save
+  </ion-button>
+
+  <ion-button (click) ="update()">
+    update
+  </ion-button>
+  <ion-button (click) ="delete()">
+    delete
+  </ion-button>
+</div>
+
+
+<h1>user List</h1>
+<div >
+  <table style="border-style: solid; border-color:white;">
+    <tr>
+      <td>id</td>
+      <td>username</td>
+      <td>phonenumber</td>
+    </tr>
+    <tr *ngFor="let u of userArr">
+      <td><ion-button (click)="showUser(u)">{{u.id}}</ion-button></td>
+      <td>{{u.username}}</td>
+      <td>{{u.phonenumber}}</td>
+    </tr>
+  </table>
+  
+</div>
+
+
+</ion-content>
