@@ -64,3 +64,13 @@ http request
 39. clienthttprequest
 - https://www.joshmorony.com/an-introduction-to-http-requests-fetching-data-in-ionic/
 - https://ionicframework.com/docs/api/input
+40. A.EP8 ສ້າງ ເກມ ສຸ່ມໂຕເລກ
+- sequelize
+- express
+- nodejs
+41. A.EP9 express typescript , index3.ts
+npm install express @types/express
+https://medium.com/@pankaj.itdeveloper/getting-started-using-typescript-with-node-js-and-express-6aff573667d5
+42. A.EP10 sequelize typescript express, RESTFUL API , index4.ts
+https://sequelize.org/
+npm install --save sequelize
