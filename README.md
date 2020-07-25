@@ -89,3 +89,7 @@ npm install -g @ionic/cli
 ionic start myApp tabs
 
 ionic start 
+44. Start project CHat
+- diagram 
+- ionic 
+- server
