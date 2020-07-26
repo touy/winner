@@ -89,7 +89,11 @@ npm install -g @ionic/cli
 ionic start myApp tabs
 
 ionic start 
-44. Start project CHat
+44. Start project Chat 1
 - diagram 
 - ionic 
 - server
+45. chat part 2
+- https://angular.io/guide/component-interaction
+- https://angular.io/guide/router
+- https://angular-2-training-book.rangle.io/routing/query_params
