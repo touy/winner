@@ -49,3 +49,51 @@ private project from Laoapps
 import { FormsModule } from '@angular/forms';
 30. https://angular.io/guide/http
 http request
+31. 
+- nodejs
+- typescript // JAVA , JS, C# , TS ==> JS
+- sequelize
+32. https://sequelize.org/
+-  npm install --save sequelize
+33. CRUD
+34. ionic https://ionicframework.com/getting-started#
+35. ionic serve
+36. ionic start winner tabs
+37. ionic generate page users
+38. routerLink="/users"
+39. clienthttprequest
+- https://www.joshmorony.com/an-introduction-to-http-requests-fetching-data-in-ionic/
+- https://ionicframework.com/docs/api/input
+40. A.EP8 ສ້າງ ເກມ ສຸ່ມໂຕເລກ
+- sequelize
+- express
+- nodejs
+41. A.EP9 express typescript , index3.ts
+npm install express @types/express
+https://medium.com/@pankaj.itdeveloper/getting-started-using-typescript-with-node-js-and-express-6aff573667d5
+42. A.EP10 sequelize typescript express, RESTFUL API , index4.ts
+https://sequelize.org/
+npm install --save sequelize
+
+# One of the following:
+$ npm install --save pg pg-hstore # Postgres
+$ npm install --save mysql2
+$ npm install --save mariadb
+$ npm install --save sqlite3
+$ npm install --save tedious # Microsoft SQL Server
+
+43. ionic 
+https://ionicframework.com/getting-started
+
+npm install -g @ionic/cli
+ionic start myApp tabs
+
+ionic start 
+44. Start project Chat 1
+- diagram 
+- ionic 
+- server
+45. chat part 2
+- https://angular.io/guide/component-interaction
+- https://angular.io/guide/router
+- https://angular-2-training-book.rangle.io/routing/query_params

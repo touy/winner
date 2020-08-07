@@ -1,0 +1,7 @@
+{
+  "name": "winner",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
