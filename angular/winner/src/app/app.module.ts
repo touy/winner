@@ -6,10 +6,12 @@ import { AppComponent } from './app.component';
 import { AddPlayerComponent } from './add-player/add-player.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { DrawComponent } from './draw/draw.component';
 @NgModule({
   declarations: [
     AppComponent,
-    AddPlayerComponent
+    AddPlayerComponent,
+    DrawComponent
   ],
   imports: [
     BrowserModule,

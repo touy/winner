@@ -1,43 +1,43 @@
-
 <div>
     <div>
-<label>Username:</label>
-    <input type="text" min="6" maxlength="30" [ngModel]="player?.username" (ngModelChange)="player.username = $event">
+        <label>Username:</label>
+        <input type="text" min="6" maxlength="30" [ngModel]="player?.username"
+            (ngModelChange)="player.username = $event">
     </div>
     <div>
-         <label>Password:</label>
-    <input type="text" [ngModel]="player?.password" (ngModelChange)="player.password = $event">
+        <label>Password:</label>
+        <input type="text" [ngModel]="player?.password" (ngModelChange)="player.password = $event">
     </div>
     <div>
         <label>Phonenumber:</label>
-    <input type="number" min="10" maxlength="10" [ngModel]="player?.phonenumber" (ngModelChange)="player.phonenumber = $event">
+        <input type="number" min="10" maxlength="10" [ngModel]="player?.phonenumber"
+            (ngModelChange)="player.phonenumber = $event">
     </div>
-<!-- <img src="{{player?.username}}"> -->
-<button (click)="addNewPlayer()">Add new </button>
-  
-    
-<h1>NewPlayer</h1>
-<div>
-    {{getNewPlayerInfo()}}
+    <!-- <img src="{{player?.username}}"> -->
+    <button (click)="addNewPlayer()">Add new </button>
+
+
+    <h1>NewPlayer</h1>
+    <div>
+        {{getNewPlayerInfo()}}
+    </div>
+
+
+    <h1>Player list</h1>
+    <div>
+        <table>
+            <tr>
+                <td>username</td>
+                <td>password</td>
+                <td>phone number</td>]
+            </tr>
+
+            <tr *ngFor="let p of playerList">
+                <td><button (click)="getPlayerInfo(p._id)">{{p.username}}</button></td>
+                <td>{{p.password}}</td>
+                <td>{{p.phonenumber}}</td>
+
+            </tr>
+        </table>
+    </div>
 </div>
-
-
-<h1>Player list</h1>
-<div>
-  <table>
-      <tr>
-          <td>username</td>
-          <td>password</td>
-          <td>phone number</td>]
-      </tr>
-
-      <tr *ngFor="let p of playerList">
-          <td><button (click)="getPlayerInfo(p._id)">{{p.username}}</button></td>
-          <td>{{p.password}}</td>
-          <td>{{p.phonenumber}}</td>
-         
-      </tr>
-  </table>
-</div>
-</div>
-
